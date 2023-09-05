@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1000000007
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lli long long int
+#define lld double
+#define mod 1000000007
+#define siz 100003
+#define larg 1e9
+
+using namespace std;
+lli n , m , k;
+
+void solve()
+{
+    cin>>n>>m>>k;
+    lli no_of_cards = n / k;
+
+    if(m==0)                        cout<<"0\n";
+    else if(m <= no_of_cards)       cout<<m<<"\n";
+    else
+    {
+        lli first_person_card = no_of_cards;
+        lli rem = ceil(1.0 * (m-first_person_card)/(k-1));
+        cout<<first_person_card-rem<<"\n";
+    }
+
+
+}
+
+
+int main()
+{
+    lli q =1 ;
+    cin>>q;
+    while(q--)  solve();
+}
