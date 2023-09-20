@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1000000007
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lli long long int
+#define lld double
+#define mod 1000000007
+#define larg 1e9
+
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+lli n;
+
+void solve()
+{
+        cin>>n;
+
+        if(n%2!=0)
+        {
+            cout<<"NO\n";
+            return;
+        }
+        else
+        {
+            double temp = double(n) / double(2);
+            double temp2 = double(n) / double(4);
+            double t1 = sqrt(temp);
+            double t2 = floor(t1);
+            double t3 = sqrt(temp2);
+            double t4 = floor(t3);
+
+            if(t1-t2 == 0 || t3-t4 == 0)      cout<<"YES\n";
+            else                              cout<<"NO\n";
+
+        }
+
+}
+
+
+
+
+
+int main()
+{
+    preprep();
+    lli q = 1;
+    cin>>q;
+    while(q--)      solve();
+
+}
