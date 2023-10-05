@@ -1,0 +1,83 @@
+//QUES CF B.MAXIMUM PRODUCT(1200)
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1000000007
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define mod 1000000007
+#define larg 1e9
+#define lli long long int
+
+
+
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+lli n;
+vector<lli> arr;
+
+bool comp(lli x , lli y)
+{
+    return abs(x)>abs(y);
+}
+
+void solve()
+{
+    cin>>n;
+    arr.resize(n);
+
+    lli maxum = -1e7;
+
+    for(lli i=0 ; i<n; i++)     cin>>arr[i] , maxum = max(maxum , arr[i]);
+
+    sort(arr.begin() , arr.end(),comp);
+
+    if(maxum < 0)
+    {
+        cout<<arr[n-1]* arr[n-2]* arr[n-3]* arr[n-4]* arr[n-5]<<"\n";
+        return;
+    }
+
+    lli ans = arr[0]*arr[1]*arr[2]*arr[3]*arr[4];
+
+    for(lli i=5 ; i<n ; i++)
+    {
+        for(lli j=0 ; j<5 ; j++)
+        {
+            lli temp = arr[i];
+            for(lli k=0 ; k<5 ; k++)
+            {
+                if(k!=j) temp *= arr[k];
+            }
+            ans = max(ans , temp);
+        }
+    }
+
+    cout<<ans<<"\n";
+
+}
+
+
+
+
+
+int main()
+{
+    preprep();
+    lli q = 1;
+    cin>>q;
+    while(q--)      solve();
+
+}
