@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1073741824
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define larg 1e9
+#define lli long long int
+#define ln "\n"
+#define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
+
+//this is for C
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+bool comp(pii a , pii b)
+{
+    if(a.first != b.first)      return a.first > b.first;
+    else                        return a.second < b.second;
+}
+
+lli n,m;
+vector<lli> arr;
+
+void solve()
+{
+    cin>>n>>m , arr.resize(n+1);
+
+    for(lli i=1 ; i<=n ; i++)
+    {
+        cin>>arr[i];
+    }
+
+    lli helper = 0;
+
+    for(lli i=1 ; i<=m ; i++)
+    {
+        lli choice;
+        cin>>choice;
+
+        switch(choice)
+        {
+
+
+        case 1:
+            lli v , x;
+            cin>>v>>x;
+            arr[v] = x - helper;
+            break;
+        case 2:
+            lli y;
+            cin>>y;
+            helper += y;
+            break;
+        case 3:
+            lli idx;
+            cin>>idx;
+            cout<<arr[idx]+helper<<"\n";
+            break;
+        }
+    }
+
+
+}
+
+int main()
+{
+    preprep();
+    //TxtIO;
+    lli q = 1;
+    //cin>>q;
+    while(q--)      solve();
+
+}
