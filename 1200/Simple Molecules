@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1073741824
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define larg 1e9
+#define lli long long int
+#define ln "\n"
+#define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
+
+//this is for C
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+bool comp(pii a , pii b)
+{
+    if(a.first != b.first)      return a.first > b.first;
+    else                        return a.second < b.second;
+}
+
+lli a , b , c;
+void solve()
+{
+    cin>>a>>b>>c;
+
+    if((a+b+c) % 2 != 0)        cout<<"Impossible\n";
+    else
+    {
+        lli ans1 = (b+c-a) / 2;
+        lli ans2 = (c+a-b) / 2;
+        lli ans3 = (a+b-c) / 2;
+        if(ans1 >=0 && ans2 >=0 && ans3 >=0 )       cout<<ans3<<" "<<ans1<<" "<<ans2<<"\n";
+        else                                        cout<<"Impossible\n";
+    }
+
+}
+
+int main()
+{
+    preprep();
+    //TxtIO;
+    lli q = 1;
+    //cin>>q;
+    while(q--)      solve();
+
+}
