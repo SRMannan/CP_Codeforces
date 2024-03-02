@@ -1,0 +1,108 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1073741824
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define larg 1e9
+#define lli long long int
+#define ln "\n"
+#define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
+
+//this is for C
+// 99999999
+// 77774444
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+bool comp(pii a , pii b)
+{
+    if(a.first != b.first)      return a.first > b.first;
+    else                        return a.second < b.second;
+}
+
+lli gcd(lli a, lli b)
+{
+    while (b != 0)
+    {
+            lli temp = b;
+            b = a % b;
+            a = temp;
+    }
+
+    return a;
+}
+
+lli n = 2e5 + 4;
+vector<lli> numUp(n) , numDown(n);
+vector<lli> vals(n);
+vector<vector<pair<lli,lli>>> adj(n);
+lli totalUps;
+
+void dfs(lli u , lli p)
+{
+        for(auto val : adj[u])
+        {
+            auto v = val.first;
+            auto w = val.second;
+
+            if(v == p)          continue;
+
+            if(w == 0)          numDown[v] = numDown[u] + 1;
+            else                numDown[v] = numDown[u];
+
+            if(w == 1)          numUp[v] = numUp[u] + 1;
+            else                numUp[v] = numUp[u];
+
+            dfs(v , u);
+            totalUps += w;
+        }
+}
+
+void solve()
+{
+    cin>>n;
+
+    for(lli i=1 ; i<n ; i++)
+    {
+        lli u , v;
+        cin>>u>>v;
+        adj[u].push_back({v,0}) , adj[v].push_back({u,1});
+    }
+
+    dfs(1,-1);
+
+    for(lli i=1 ; i<=n ; i++)           vals[i] = numDown[i] + totalUps - numUp[i];
+
+    lli ans = 1e9;
+    for(lli i=1 ; i<=n ; i++)           ans = min(ans , vals[i]);
+
+    cout<<ans<<"\n";
+
+    for(lli i=1 ; i<=n ; i++)
+    {
+        if(vals[i] == ans)              cout<<i<<" ";
+    }
+
+}
+
+int main()
+{
+    preprep();
+    //TxtIO;
+    lli q = 1;
+    //cin>>q;
+    while(q--)      solve();
+
+}
