@@ -1,0 +1,91 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1073741824
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define larg 1e9
+#define lli long long int
+#define ln "\n"
+#define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
+
+//this is for C
+// 99999999
+// 77774444
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+bool comp(pii a , pii b)
+{
+    if(a.first != b.first)      return a.first > b.first;
+    else                        return a.second < b.second;
+}
+
+lli gcd(lli a, lli b)
+{
+    while (b != 0)
+    {
+            lli temp = b;
+            b = a % b;
+            a = temp;
+    }
+
+    return a;
+}
+
+lli n , m;
+vector<string> s;
+vector<lli> marks;
+
+void solve()
+{
+       cin>>n>>m;
+       s.resize(n);
+       marks.resize(m);
+
+       for(lli i=0 ; i<n ; i++)         cin>>s[i];
+
+       for(lli i=0 ; i<m ; i++)         cin>>marks[i];
+
+       lli nos , res = 0;
+       map<char,lli> mp;
+
+       for(lli i=0 ; i<m ; i++)
+       {
+            for(lli j=0 ; j<n ; j++)
+            {
+                auto ch = s[j][i];
+                mp[ch]++;
+            }
+
+            lli ans = -1e7;
+            for(auto val : mp)               ans = max(val.second , ans);
+
+            res = res + (ans * marks[i]);
+            mp.clear();
+       }
+
+       cout<<res<<"\n";
+
+}
+
+int main()
+{
+    preprep();
+    //TxtIO;
+    lli q = 1;
+    //cin>>q;
+    while(q--)      solve();
+
+}
