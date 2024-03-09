@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+#define REP(i,n) for (int i=1;i<=n;i++)
+#define mod 1073741824
+#define pb push_back
+#define ff first
+#define ss second
+#define pii pair<int,int>
+#define vi vector<int>
+#define vl vector<long long int>
+#define vii vector<pair<int,int>>
+#define lld double
+#define larg 1e9
+#define lli long long int
+#define ln "\n"
+#define TxtIO   freopen("input.txt","r",stdin); freopen("output.txt","w",stdout);
+
+//this is for C
+// 99999999
+// 77774444
+using namespace std;
+
+void preprep()
+{
+	ios_base :: sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+}
+
+bool comp(pii a , pii b)
+{
+    if(a.first != b.first)      return a.first > b.first;
+    else                        return a.second < b.second;
+}
+
+lli gcd(lli a, lli b)
+{
+    while (b != 0)
+    {
+            lli temp = b;
+            b = a % b;
+            a = temp;
+    }
+
+    return a;
+}
+
+lli n , k;
+vector<lli> arr;
+
+void solve()
+{
+        string s;
+        cin>>s;
+
+        lli ct = 0;
+        for(lli i=0 ; i<s.size() ; i++)
+        {
+            if(s[i] == '_')         continue;
+
+            if(s[i] == 'D' && s[i+1] == 'a' && s[i+2] == 'n' && s[i+3] == 'i' && s[i+4] == 'l')                             i+=4 , ct++;
+            else if(s[i] == 'O' && s[i+1] == 'l' && s[i+2] == 'y' && s[i+3] == 'a')                                         i+=3 , ct++;
+            else if(s[i] == 'S' && s[i+1] == 'l' && s[i+2] == 'a' && s[i+3] == 'v' && s[i+4] == 'a')                        i+=4 , ct++;
+            else if(s[i] == 'A' && s[i+1] == 'n' && s[i+2] == 'n')                                                          i+=2 , ct++;
+            else if(s[i] == 'N' && s[i+1] == 'i' && s[i+2] == 'k' && s[i+3] == 'i' && s[i+4] == 't' && s[i+5] == 'a')       i+=5 , ct++;
+        }
+
+        if(ct == 1)                 cout<<"YES\n";
+        else                        cout<<"NO\n";
+}
+
+int main()
+{
+    preprep();
+    //TxtIO;
+    lli q = 1;
+    //cin>>q;
+    while(q--)      solve();
+
+}
